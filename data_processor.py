@@ -12,7 +12,7 @@ def process_data(file_path):
 
         all_data = []
 
-        #Lê as planilhas
+        # Lê as planilhas
         planilhas = pd.read_excel(file_path, sheet_name=None, engine='openpyxl')
         for planilha, df in planilhas.items():
             print(f"Lendo a planilha: {planilha}")
@@ -21,7 +21,7 @@ def process_data(file_path):
             colunaPadrao = 'quantidade de reclamações reguladas procedentes'
             colunaAlternativa = 'quantidade de reclamaçoes procedentes'
 
-            #Valida as colunas
+            # Valida as colunas
             if colunaPadrao not in df.columns:
                 if colunaAlternativa in df.columns:
                     df.rename(columns={colunaAlternativa: colunaPadrao}, inplace=True)
