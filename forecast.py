@@ -28,7 +28,11 @@ def forecast_complaints(full_df, steps=12):
     plt.grid(True)
     plt.show()
     
+
     # Retorna o forecast como DataFrame
     forecast_df = forecast.reset_index()
     forecast_df.columns = ['timestamp', 'predicted_complaints']
+
+    # Converte datetime
+    forecast_df['timestamp'] = forecast_df['timestamp'].dt.strftime('%Y-%m-%dT%H:%M:%SZ')
     return forecast_df
