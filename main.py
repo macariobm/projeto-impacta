@@ -3,6 +3,7 @@ from data_processor import process_data, file_path
 from forecast import forecast_complaints
 from flask_cors import CORS
 import pandas as pd
+import plotly.express as px
 
 
 app = Flask(__name__)
