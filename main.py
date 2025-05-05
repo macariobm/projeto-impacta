@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 CORS(app)
 
-# rota para visualização dos dados a serem fetched pelo Grafana
+# rota para visualização dos dados a serem fetched pelo matplotlib
 @app.route('/dados', methods=['GET'])
 
 def get_dados():
