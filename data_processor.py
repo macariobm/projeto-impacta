@@ -45,7 +45,7 @@ def process_data(file_path):
         print("DataFrame após concatenação:")
         print(full_df.head())
 
-        # Adiciona tiemstamp para representação no Grafana
+        # Adiciona tiemstamp
         full_df['timestamp'] = datetime.datetime.now().isoformat()
 
         # Verifica as colunas obrigatórias
@@ -64,7 +64,7 @@ def process_data(file_path):
         print("DataFrame agrupado:")
         print(grouped_df)
 
-        # Converte para JSON para representação no Grafana
+        # Converte para JSON
         result = grouped_df.to_dict(orient='records')
         print("Dados agrupados finais:")
         print(result)
