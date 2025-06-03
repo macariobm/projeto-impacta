@@ -18,9 +18,9 @@ def get_dados():
     data = process_data(file_path)
     return jsonify(data)
 
-@app.route('/forecast', methods=['GET'])
+@app.route('/forecast-graph', methods=['GET'])
 
-def forecast_data():
+def forecast_plot():
     data = process_data(file_path)
     if not data:
         return jsonify({"Erro": "Não há dados"}), 400
@@ -36,7 +36,13 @@ def plot_data():
     if not data:
         return jsonify({"Erro": "Não há dados"}), 400
 
-    df = pd.DataFrame(data)
+    full_df = pd.DataFrame(data)
+
+    # datetime
+    full_df['timestamp'] = pd.to_datetime(full_df['timestamp'])
+
+    # reagrupa mensalmente
+    time_series = full_df.set_index('timestamp').resample('M')['quantidade de reclamações reguladas procedentes'].sum()
 
     # mantém colunas e as renomeia
     df = df[['instituição financeira', 'quantidade de reclamações reguladas procedentes']]
